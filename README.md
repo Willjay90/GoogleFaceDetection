@@ -22,7 +22,7 @@ In this project, there are two modes.
 
 ### Single Image Detection && Real Time Camera Image Detection
 
-<img src="https://github.com/Weijay/READMEs/blob/master/GoogleFaceDetection/PhotoMode.PNG" width="270" height="480" />
-<img src="https://github.com/Weijay/READMEs/blob/master/GoogleFaceDetection/CameraMode.PNG" width="270" height="480" />
+<img src="https://github.com/Weijay/iOS/blob/master/GoogleFaceDetection/resources/_PhotoMode.PNG" width="270" height="480" />
+<img src="https://github.com/Weijay/iOS/blob/master/GoogleFaceDetection/resources/CameraMode.PNG" width="270" height="480" />
 
 
