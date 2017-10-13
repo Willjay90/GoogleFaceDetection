@@ -11,18 +11,14 @@ import AVKit
 import AVFoundation
 import GoogleMobileVision
 
-
-
 class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
 
     @IBOutlet weak var placeholder: UIView!
     @IBOutlet weak var overlay: UIView!
-    @IBOutlet weak var cameraSwitch: UISwitch! {
-        didSet {
-            devicePosition = self.cameraSwitch.isOn ? .front : .back
-        }
-    }
     
+    @IBOutlet weak var cameraSwitchControl: UISegmentedControl!
+    
+
     var videoDataOutputQueue = DispatchQueue(label: "VideoDataOutputQueue")
     
     var faceDetector: GMVDetector!
@@ -34,17 +30,18 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     var videoDataOutput: AVCaptureVideoDataOutput!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
-    var devicePosition: AVCaptureDevicePosition!
+    var devicePosition: AVCaptureDevice.Position!
 
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.devicePosition = cameraSwitchControl.selectedSegmentIndex == 0 ? .front : .back
+        
         // Set up default camera settings.
-        self.cameraSwitch.isOn = true
         self.session = AVCaptureSession()
-        self.session.sessionPreset = AVCaptureSessionPresetMedium
+        self.session.sessionPreset = AVCaptureSession.Preset.medium
         self.updateCameraSelection()
         
         // Setup video processing pipeline.
@@ -79,34 +76,37 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     
     override func willAnimateRotation(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
-        if self.previewLayer != nil {
-            if (toInterfaceOrientation == .portrait) {
-                self.previewLayer.connection.videoOrientation = .portrait
-            } else if (toInterfaceOrientation == .portraitUpsideDown) {
-                self.previewLayer.connection.videoOrientation = .portraitUpsideDown
-            } else if (toInterfaceOrientation == .landscapeLeft) {
-                self.previewLayer.connection.videoOrientation = .landscapeLeft
-            } else if (toInterfaceOrientation == .landscapeRight) {
-                self.previewLayer.connection.videoOrientation = .landscapeRight
-            }
-
+        guard let previewLayer = self.previewLayer else { return }
+        
+        switch toInterfaceOrientation {
+        case .portrait:
+            previewLayer.connection?.videoOrientation = .portrait
+        case .portraitUpsideDown:
+            previewLayer.connection?.videoOrientation = .portraitUpsideDown
+        case .landscapeLeft:
+            previewLayer.connection?.videoOrientation = .landscapeLeft
+        case .landscapeRight:
+            previewLayer.connection?.videoOrientation = .landscapeRight
+        default:
+            return
         }
     }
 
-    @IBAction func cameraDeviceChanged(_ sender: UISwitch) {
+    @IBAction func switchCamera(_ sender: UISegmentedControl) {
         updateCameraSelection()
     }
     
     func updateCameraSelection() {
         self.session.beginConfiguration()
         // Remove old inputs
-        let oldInputs = self.session.inputs as! [AVCaptureInput]
+        let oldInputs = self.session.inputs
         for oldInput in oldInputs {
             self.session.removeInput(oldInput)
         }
         
-        let desiredPosition: AVCaptureDevicePosition = cameraSwitch.isOn ? .front : .back
-        captureDevice = AVCaptureDevice.defaultDevice(withDeviceType: .builtInWideAngleCamera, mediaType: AVMediaTypeVideo, position: desiredPosition)
+        let desiredPosition: AVCaptureDevice.Position = self.cameraSwitchControl.selectedSegmentIndex == 0 ? .front : .back
+
+        captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: desiredPosition)
         
         do {
             let input = try AVCaptureDeviceInput(device: self.captureDevice)
@@ -130,7 +130,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     func setupVideoProcessing() {
         self.videoDataOutput = AVCaptureVideoDataOutput()
-        let rgbOutputSettings = [(kCVPixelBufferPixelFormatTypeKey as NSString): NSNumber(value: kCVPixelFormatType_32BGRA)]
+        let rgbOutputSettings = [String(kCVPixelBufferPixelFormatTypeKey): Int(kCVPixelFormatType_32BGRA)]
         self.videoDataOutput.videoSettings = rgbOutputSettings
         
         if !self.session.canAddOutput(videoDataOutput) {
@@ -154,7 +154,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     func setupCameraPreview() {
         self.previewLayer = AVCaptureVideoPreviewLayer(session: self.session)
         self.previewLayer.backgroundColor = UIColor.white.cgColor
-        self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspect
+        self.previewLayer.videoGravity = AVLayerVideoGravity.resizeAspect
         let rootLayer = self.placeholder.layer
         rootLayer.masksToBounds = true
         self.previewLayer.frame = rootLayer.bounds
@@ -173,7 +173,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     }
     
     // MARK: - AVCaptureVideoDataOutputSampleBufferDelegate
-    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!) {
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let image = GMVUtility.sampleBufferTo32RGBA(sampleBuffer) else {
             print("No Image 😂")
             return
@@ -181,6 +181,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         
         // Establish the image orientation.
         let deviceOrientation = UIDevice.current.orientation
+
         let orientation: GMVImageOrientation = GMVUtility.imageOrientation(from: deviceOrientation, with: devicePosition, defaultDeviceOrientation: self.lastKnownDeviceOrientation)
         let options = [GMVDetectorImageOrientation: orientation.rawValue] // rawValue
         
@@ -190,7 +191,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             return
         }
         print("Detected faces: \(faces.count)")
-
+        
         // The video frames captured by the camera are a different size than the video preview.
         // Calculates the scale factors and offset to properly display the features.
         let fdesc = CMSampleBufferGetFormatDescription(sampleBuffer)
@@ -202,7 +203,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
         let viewRatio = parentFrameSize.width / parentFrameSize.height
         var xScale: CGFloat = 1, yScale: CGFloat = 1
         var videoBox = CGRect.zero
-
+        
         if (viewRatio > cameraRatio) {
             videoBox.size.width = parentFrameSize.height * clap.size.width / clap.size.height
             videoBox.size.height = parentFrameSize.height
@@ -220,7 +221,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             xScale = videoBox.size.width / clap.size.height
             yScale = videoBox.size.height / clap.size.width
         }
-
+        
         DispatchQueue.main.sync {
             // Remove previously added feature views.
             for featureView in self.overlay.subviews {
@@ -231,7 +232,7 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
             for face in faces {
                 let faceRect = self.scaledRect(face.bounds, xScale: xScale, yScale: yScale, offset: videoBox.origin)
                 DrawingUtility.addRectangle(faceRect, to: overlay, with: .red)
-            
+                
                 // Mouth
                 
                 if face.hasBottomMouthPosition {
@@ -300,8 +301,8 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
                 
             }
         }
-
     }
+
 
 }
 

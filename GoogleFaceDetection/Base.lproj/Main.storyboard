@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VVd-bB-OOx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13528" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VVd-bB-OOx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13526"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Photo-->
+        <!--Face Detection-->
         <scene sceneID="9kU-Sn-klg">
             <objects>
                 <viewController id="smT-j2-47A" customClass="PhotoViewController" customModule="GoogleFaceDetection" customModuleProvider="target" sceneMemberID="viewController">
@@ -29,16 +27,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="viy-fO-4Fw">
-                                <rect key="frame" x="8" y="562" width="359" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="VKg-pR-3GO"/>
-                                </constraints>
-                                <state key="normal" title="Run Face Detection"/>
-                                <connections>
-                                    <action selector="faceRecognitionClicked:" destination="smT-j2-47A" eventType="touchUpInside" id="CZS-mT-bbc"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -47,15 +35,18 @@
                             <constraint firstAttribute="bottom" secondItem="S8B-5U-ThK" secondAttribute="bottom" id="FEG-Qm-yjn"/>
                             <constraint firstItem="S8B-5U-ThK" firstAttribute="bottom" secondItem="pHx-FM-f6t" secondAttribute="bottom" id="H12-EO-F5N"/>
                             <constraint firstItem="S8B-5U-ThK" firstAttribute="top" secondItem="pHx-FM-f6t" secondAttribute="top" id="HLt-zp-Ukq"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="viy-fO-4Fw" secondAttribute="trailing" constant="-8" id="Uus-0b-gMp"/>
                             <constraint firstItem="S8B-5U-ThK" firstAttribute="trailing" secondItem="pHx-FM-f6t" secondAttribute="trailing" id="VE9-Cm-THD"/>
                             <constraint firstItem="S8B-5U-ThK" firstAttribute="leading" secondItem="2ta-b4-fjP" secondAttribute="leading" id="p2i-DO-U5Q"/>
-                            <constraint firstItem="4fR-ZR-4sJ" firstAttribute="top" secondItem="viy-fO-4Fw" secondAttribute="bottom" constant="8" id="rum-QG-KhW"/>
                             <constraint firstItem="S8B-5U-ThK" firstAttribute="top" secondItem="2ta-b4-fjP" secondAttribute="top" id="vmV-2Q-ZvY"/>
-                            <constraint firstItem="viy-fO-4Fw" firstAttribute="leading" secondItem="2ta-b4-fjP" secondAttribute="leadingMargin" constant="-8" id="w0f-0c-7Ps"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Photo" image="Image" id="tv9-hI-xIl"/>
+                    <navigationItem key="navigationItem" title="Face Detection" id="5pc-el-qfT">
+                        <barButtonItem key="rightBarButtonItem" title="Detect" id="cwH-Rp-9oL">
+                            <connections>
+                                <action selector="faceRecognitionClicked:" destination="smT-j2-47A" id="pfR-I3-J3h"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="faceImageView" destination="pHx-FM-f6t" id="N3E-at-2j6"/>
                         <outlet property="overlay" destination="S8B-5U-ThK" id="dYO-aC-zj6"/>
@@ -63,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZqL-oV-hys" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="100" y="137.18140929535232"/>
+            <point key="canvasLocation" x="1039.2" y="137.18140929535232"/>
         </scene>
         <!--Camera-->
         <scene sceneID="tne-QT-ifu">
@@ -87,22 +78,23 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wuN-lf-gD8">
-                                <rect key="frame" x="305" y="40" width="51" height="31"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="a6N-dC-KFV">
+                                <rect key="frame" x="123" y="31" width="121" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Front"/>
+                                    <segment title="Rear"/>
+                                </segments>
                                 <connections>
-                                    <action selector="cameraDeviceChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="7o6-Jx-evk"/>
+                                    <action selector="switchCamera:" destination="BYZ-38-t0r" eventType="valueChanged" id="6yM-bv-VhV"/>
                                 </connections>
-                            </switch>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="wuN-lf-gD8" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="QiQ-RC-LUh"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="wuN-lf-gD8" secondAttribute="trailing" constant="5" id="t9K-DI-Wvx"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Camera" image="Camera" id="POU-RE-DeL"/>
                     <connections>
-                        <outlet property="cameraSwitch" destination="wuN-lf-gD8" id="8GT-QR-a2u"/>
+                        <outlet property="cameraSwitchControl" destination="a6N-dC-KFV" id="Gl7-vv-8re"/>
                         <outlet property="overlay" destination="nhI-bI-4mv" id="pG0-E0-UbJ"/>
                         <outlet property="placeholder" destination="zN8-12-arI" id="9Be-eG-QHn"/>
                     </connections>
@@ -117,17 +109,37 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="VVd-bB-OOx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="tbH-ZV-doW">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="smT-j2-47A" kind="relationship" relationship="viewControllers" id="5Et-34-Cv7"/>
+                        <segue destination="GcL-LL-koA" kind="relationship" relationship="viewControllers" id="5Et-34-Cv7"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="B32-ga-wbs"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fKa-eg-qDe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-839.20000000000005" y="137.18140929535232"/>
+        </scene>
+        <!--Photo-->
+        <scene sceneID="8La-bd-Yx6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GcL-LL-koA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Photo" image="Image" id="tv9-hI-xIl"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="saP-NU-u7s">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="smT-j2-47A" kind="relationship" relationship="rootViewController" id="9LB-Js-gNw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gkt-YH-qXd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="100" y="137.18140929535232"/>
         </scene>
     </scenes>
     <resources>

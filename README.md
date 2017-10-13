@@ -1,5 +1,5 @@
 # GoogleFaceDetection
-#### This project build on iOS 10.2 in Swift 3.
+#### This project build on iOS 11 in Swift 4.
 
 In iOS, to detect faces in a picture, you can use either [CIDetector](https://developer.apple.com/reference/coreimage/cidetector) (Apple)
 or [Mobile Vision](https://developers.google.com/vision/face-detection-concepts) (Google)
@@ -22,7 +22,7 @@ In this project, there are two modes.
 
 ### Single Image Detection && Real Time Camera Image Detection
 
-<img src="https://github.com/Weijay/iOS/blob/master/GoogleFaceDetection/resources/_PhotoMode.PNG" width="270" height="480" />
-<img src="https://github.com/Weijay/iOS/blob/master/GoogleFaceDetection/resources/CameraMode.PNG" width="270" height="480" />
+<img src="https://github.com/Weijay/GoogleFaceDetection/blob/master/GoogleFaceDetection/resources/PhotoMode.PNG" width="270" height="480" />
+<img src="https://github.com/Weijay/GoogleFaceDetection/blob/master/GoogleFaceDetection/resources/CameraMode.PNG" width="270" height="480" />
 
 

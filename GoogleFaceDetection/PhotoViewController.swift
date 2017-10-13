@@ -30,14 +30,14 @@ class PhotoViewController: UIViewController {
         
     }
 
-    @IBAction func faceRecognitionClicked(_ sender: UIButton) {
+    @IBAction func faceRecognitionClicked(_ sender: UIBarButtonItem) {
         for annotationView in self.overlay.subviews {
             annotationView.removeFromSuperview()
         }
         
         // Invoke features detection.
         let faces = self.faceDetector.features(in: self.faceImageView.image, options: nil) as? [GMVFaceFeature]
-        print("faces count: \(faces?.count)")
+        print("faces count: \(String(describing: faces?.count))")
         
         // Compute image offset.
         let translate = CGAffineTransform.identity.translatedBy(x: (self.view.frame.size.width - (self.faceImageView.image?.size.width)!) / 2, y: (self.view.frame.size.height - (self.faceImageView.image?.size.height)!) / 2)

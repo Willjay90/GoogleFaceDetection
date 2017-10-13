@@ -10,12 +10,12 @@
 		023CF82C1E6D305200ED4A54 /* multi-face.png in Resources */ = {isa = PBXBuildFile; fileRef = 023CF82B1E6D305200ED4A54 /* multi-face.png */; };
 		023CF82F1E6D308000ED4A54 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023CF82E1E6D308000ED4A54 /* PhotoViewController.swift */; };
 		0253F9CE1E697F0E00966EA4 /* DrawingUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0253F9CD1E697F0E00966EA4 /* DrawingUtility.swift */; };
+		027A23521E9CBD100075EE45 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 027A23511E9CBD100075EE45 /* README.md */; };
 		027E87E41E6967D90057E1CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027E87E31E6967D90057E1CA /* AppDelegate.swift */; };
 		027E87E61E6967D90057E1CA /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027E87E51E6967D90057E1CA /* CameraViewController.swift */; };
 		027E87E91E6967D90057E1CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 027E87E71E6967D90057E1CA /* Main.storyboard */; };
 		027E87EB1E6967D90057E1CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 027E87EA1E6967D90057E1CA /* Assets.xcassets */; };
 		027E87EE1E6967D90057E1CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 027E87EC1E6967D90057E1CA /* LaunchScreen.storyboard */; };
-		027E87F91E6967D90057E1CA /* GoogleFaceDetectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027E87F81E6967D90057E1CA /* GoogleFaceDetectionTests.swift */; };
 		7DD1796CBFB80D61C20368E9 /* Pods_GoogleFaceDetection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1339353CA10CBB70AA08A956 /* Pods_GoogleFaceDetection.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +33,7 @@
 		023CF82B1E6D305200ED4A54 /* multi-face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "multi-face.png"; sourceTree = "<group>"; };
 		023CF82E1E6D308000ED4A54 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		0253F9CD1E697F0E00966EA4 /* DrawingUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingUtility.swift; sourceTree = "<group>"; };
+		027A23511E9CBD100075EE45 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		027E87E01E6967D90057E1CA /* GoogleFaceDetection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleFaceDetection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		027E87E31E6967D90057E1CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		027E87E51E6967D90057E1CA /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -41,8 +42,6 @@
 		027E87ED1E6967D90057E1CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		027E87EF1E6967D90057E1CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		027E87F41E6967D90057E1CA /* GoogleFaceDetectionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoogleFaceDetectionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		027E87F81E6967D90057E1CA /* GoogleFaceDetectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleFaceDetectionTests.swift; sourceTree = "<group>"; };
-		027E87FA1E6967D90057E1CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1339353CA10CBB70AA08A956 /* Pods_GoogleFaceDetection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleFaceDetection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32297FF205C00D2A76F2EDAC /* Pods-GoogleFaceDetection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleFaceDetection.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleFaceDetection/Pods-GoogleFaceDetection.debug.xcconfig"; sourceTree = "<group>"; };
 		D70ADA5F65E1610F0866FF2D /* Pods-GoogleFaceDetection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleFaceDetection.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleFaceDetection/Pods-GoogleFaceDetection.release.xcconfig"; sourceTree = "<group>"; };
@@ -78,8 +77,8 @@
 		027E87D71E6967D90057E1CA = {
 			isa = PBXGroup;
 			children = (
+				027A23511E9CBD100075EE45 /* README.md */,
 				027E87E21E6967D90057E1CA /* GoogleFaceDetection */,
-				027E87F71E6967D90057E1CA /* GoogleFaceDetectionTests */,
 				027E87E11E6967D90057E1CA /* Products */,
 				10F7752679AF967B787BC24A /* Pods */,
 				55D71C265190498D8E125D6C /* Frameworks */,
@@ -109,15 +108,6 @@
 				027E87EF1E6967D90057E1CA /* Info.plist */,
 			);
 			path = GoogleFaceDetection;
-			sourceTree = "<group>";
-		};
-		027E87F71E6967D90057E1CA /* GoogleFaceDetectionTests */ = {
-			isa = PBXGroup;
-			children = (
-				027E87F81E6967D90057E1CA /* GoogleFaceDetectionTests.swift */,
-				027E87FA1E6967D90057E1CA /* Info.plist */,
-			);
-			path = GoogleFaceDetectionTests;
 			sourceTree = "<group>";
 		};
 		10F7752679AF967B787BC24A /* Pods */ = {
@@ -190,7 +180,6 @@
 				TargetAttributes = {
 					027E87DF1E6967D90057E1CA = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = YMQ7S58LN7;
 						ProvisioningStyle = Automatic;
 					};
 					027E87F31E6967D90057E1CA = {
@@ -248,9 +237,17 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GoogleFaceDetection/Pods-GoogleFaceDetection-resources.sh",
+				"${PODS_ROOT}/GoogleMobileVision/FaceDetector/Resources/BCLjoy_100.emd",
+				"${PODS_ROOT}/GoogleMobileVision/FaceDetector/Resources/BCLlefteyeclosed_200.emd",
+				"${PODS_ROOT}/GoogleMobileVision/FaceDetector/Resources/BCLrighteyeclosed_200.emd",
+				"${PODS_ROOT}/GoogleMobileVision/FaceDetector/Resources/LMprec_600.emd",
+				"${PODS_ROOT}/GoogleMobileVision/FaceDetector/Resources/MFTprec_202.emd",
+				"${PODS_ROOT}/GoogleMobileVision/FaceDetector/Resources/PFFprec_702.emd",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -263,13 +260,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GoogleFaceDetection-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E3F5BA8D333AB5DCFCD2FFC6 /* [CP] Embed Pods Frameworks */ = {
@@ -296,6 +296,7 @@
 			files = (
 				027E87E61E6967D90057E1CA /* CameraViewController.swift in Sources */,
 				023CF82F1E6D308000ED4A54 /* PhotoViewController.swift in Sources */,
+				027A23521E9CBD100075EE45 /* README.md in Sources */,
 				027E87E41E6967D90057E1CA /* AppDelegate.swift in Sources */,
 				0253F9CE1E697F0E00966EA4 /* DrawingUtility.swift in Sources */,
 			);
@@ -305,7 +306,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				027E87F91E6967D90057E1CA /* GoogleFaceDetectionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,12 +437,13 @@
 			baseConfigurationReference = 32297FF205C00D2A76F2EDAC /* Pods-GoogleFaceDetection.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YMQ7S58LN7;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GoogleFaceDetection/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.transcend.GoogleFaceDetection;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WeiChieh.GoogleFaceDetection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -451,12 +452,13 @@
 			baseConfigurationReference = D70ADA5F65E1610F0866FF2D /* Pods-GoogleFaceDetection.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YMQ7S58LN7;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GoogleFaceDetection/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.transcend.GoogleFaceDetection;
+				PRODUCT_BUNDLE_IDENTIFIER = com.WeiChieh.GoogleFaceDetection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
